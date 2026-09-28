@@ -1,33 +1,24 @@
 # AI Lead Follow-Up Automation
 
-An n8n workflow that captures inbound leads and sends a personalized,
-AI-generated response within seconds.
+An n8n workflow that captures an inbound lead and sends a personalized,
+AI-generated reply in under a minute.
 
-Built for savautomations, my freelance automation practice, after I kept
-losing leads to slow reply times while carrying a full course load.
+Built for my freelance automation practice after I kept losing leads to
+slow response times.
 
 ## Architecture
 
-Webhook -> Set -> Basic LLM Chain (Anthropic API) -> Gmail
+Webhook → Set (field normalization) → Basic LLM Chain (Anthropic API) → Gmail
 
-- **Webhook** receives the inbound lead payload from a form or CRM
-- **Set** normalizes and maps the incoming fields
-- **Basic LLM Chain** calls the Anthropic API (claude-haiku-4-5) with a
-  prompt template that produces a consistent, on-brand reply
-- **Gmail** sends the response and logs the thread
-
-![Workflow](workflow.png)
-
-## Setup
-
-1. Import `workflow.json` into your n8n instance
-2. Add your Anthropic API credential to the LLM Chain node
-3. Connect a Gmail account to the Gmail node
-4. Activate the workflow and point your form at the webhook URL
+- **Webhook** receives the inbound lead payload from a web form
+- **Set** normalizes and maps incoming fields
+- **LLM Chain** calls the Anthropic API with a prompt template tuned for
+  consistent tone and structure
+- **Gmail** sends the reply and logs the thread
 
 ## Notes
 
-Credentials are stripped from the exported workflow. Response latency is
-typically under five seconds end to end.
+Self-hosted after the cloud trial expired. Response latency is typically
+under a minute end to end.
 
-Packaged version available at https://savarix.gumroad.com
+Workflow export to be published here once credentials are fully stripped.
